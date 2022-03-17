@@ -12,13 +12,13 @@ UA = {"User-Agent": UserAgent().random}
 
 for 路径 in 输入:
 
-    html_doc = requests.get(f'{默认}{路径}', headers=UA).text
+    网页 = requests.get(f'{默认}{路径}', headers=UA).text
 
-    ADS = BeautifulSoup(html_doc, 'lxml')
+    对象 = BeautifulSoup(网页, 'lxml')
 
-    写真名 = ADS.select(".entry-content p")[0].string
+    写真名 = 对象.select(".entry-content p")[0].string
 
-    链接 = [i['src'] for i in ADS.select(".entry-content div a img")]
+    链接 = [i['src'] for i in 对象.select(".entry-content div a img")]
     
     去重链接 = list(filter(None, sorted(set(链接),key=链接.index)))
 
