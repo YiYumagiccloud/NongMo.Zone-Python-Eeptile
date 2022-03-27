@@ -19,17 +19,17 @@ for 路径 in 输入:
     写真名 = 对象.select(".entry-content p")[0].string
 
     链接 = [i['src'] for i in 对象.select(".entry-content div a img")]
-    
-    去重链接 = list(filter(None, sorted(set(链接),key=链接.index)))
 
-    是否有文件夹('NongMo',f'{写真名}')
+    去重链接 = list(filter(None, sorted(set(链接), key=链接.index)))
+
+    是否有文件夹('NongMo', f'{写真名}')
 
     print(f' --- 开始下载 {写真名}, 共{len(去重链接)}张 --- ')
     print()
 
     for 几, i in enumerate(去重链接, start=1):
 
-        图片 = requests.get(i, headers=UA, stream=True)
+        图片 = requests.get(i, headers={"User-Agent": UserAgent().random}, stream=True)
 
         print(f' --- 正在下载第{几}张 --- ')
 
